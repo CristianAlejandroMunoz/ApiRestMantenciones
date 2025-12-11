@@ -13,11 +13,25 @@ from .serializers import (
 )
 
 
-# Endpoint de estado obligatorio por la pauta
+# -------------------------------------------------------------
+# ENDPOINT DE PRUEBA EXIGIDO POR LA PAUTA (3.1.3 - Endpoint de estado)
+# -------------------------------------------------------------
 @api_view(["GET"])
 def status(request):
-    return Response({"status": "API funcionando correctamente"})
+    """
+    Endpoint simple para verificar que la API está funcionando correctamente.
+    Retorna un JSON con información básica del sistema.
+    """
+    return Response({
+        "status": "OK",
+        "message": "API funcionando correctamente",
+        "version": "1.0"
+    })
 
+
+# -------------------------------------------------------------
+# VIEWSETS CRUD PARA TODAS LAS ENTIDADES
+# -------------------------------------------------------------
 
 class EmpresaViewSet(viewsets.ModelViewSet):
     queryset = Empresa.objects.all()
